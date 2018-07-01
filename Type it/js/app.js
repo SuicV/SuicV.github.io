@@ -2,9 +2,19 @@ function changePosition(wroth, unwroth,key){
     wroth.innerHTML += key;
     unwroth.innerHTML = unwroth.innerText.slice(1);
 }
+
 function wrongWord (word){
     return '<span class="text-danger"> '+word+" </span>";
 }
+var showCPM = function(){
+    if(correctTypedLetter*60 > HightCPM && correctTypedLetter*60 < 300){
+        HightCPM = correctTypedLetter *60 ;
+    }
+    if(document.querySelector("#CPM span")){
+        document.querySelector("#CPM span").innerText = correctTypedLetter*60 ;
+        correctTypedLetter = 0 ;
+    }
+};
 /*
 *   NEEDED VARIABLES :
 *      I- INPUT WHERE THE USER TYPING
@@ -20,42 +30,68 @@ var screen = document.querySelector(".textToWrite"),
     wroth = document.querySelector(".writed"),
     unwroth = document.querySelector(".unwrited"),
     unwrothWords = unwroth.innerText.split(" "),
-    correctLetterOfWord = "";
-    correctTypedWord = 0;
-    HScroll = 0 ;
-    wrong = [];
+    correctLetterOfWord = "",
+    correctTypedLetter = 0,
+    HScroll = 0 ,
+    started = false ,
+    wrong = [],
+    HightCPM = 0,
+    correctTypedWord = 0 ;
+input.value = "";
 screen.scrollTop = 0 ;
 /*
 *  [CORE ALGORITHM]
 *  [EVENT] => WHEN USER PRESS ENY KEYBOARD BUTTON
 *       1- IF THE TYPED LETTER INCORRECT ADD DANGER CLASS TO THE INPUT
-*       2- IF USER JUMP TO NEXT WORD (press space button )
+*       2- IF USER JUMP TO NEXT WORD (press space button ) AND WORDS TO WRITE EXIST
 *           2-1) IF TYPED WORD INCORRECT ADD IT TO WROTH TEXT WITH RED COLOR AND ADD THIS WORD TO LIST OF WRONG TYPED WORD
 *           2-2) IF TYPED WORD CORRECT ADD IT TO MARK ELEMENT
 *           [EVENT] => WHEN WROTH ELEMENT TAKE ALL SIZE OF THE TOOL
 *                           1- SCROLL TO THE NEXT SCREEN TO WRITE
 *       3- IF USER TYPE CORRECT LETTER ADD IT TO wroth ELEMENT WHIT GREEN COLOR
-*
+*  [EVENT] => WHEN USER START TYPING RUN COUNTING TIME AND STATISTICS COUNTERS
 *
 * */
 input.addEventListener("keyup",function(e) {
+    if(!started){
+        setTimeout(function(){
+            clearInterval(showCPM);
+            input.disabled = true;
+            document.querySelector("#resultes").innerHTML = '<span class="alert bg-danger d-block" role="alert">' +
+            '<i class="fas fa-clock"></i> Time Up' +
+            '</span>' +
+            '<p><strong>High CPM : </strong>'+HightCPM+'</p>'+
+            '<p><strong>wrongs : </strong>'+wrong.join(" | ")+
+            "<p><strong>Correct words in 60 seconds :</strong>"+correctTypedWord+"</p>"
+            +"<p>Thank you for playing .</p>";
+            document.querySelector(".tool").remove();
+        },60000);
+        setInterval(showCPM,1000);
 
+        started = true ;
+
+    }
     if (e.key == " ") {
-        /*
-        * when user want to jump into the next word ;
-        * */
+
+        //  IF WORDS TO WRITE EXIST
+            /*
+             * when user want to jump into the next word ;
+             * */
+        //      REMOVE REST OF THE INCORRECT WORD
+        unwroth.innerText = unwroth.innerText.replace(new RegExp("^"+unwrothWords[0].slice(correctLetterOfWord.length)), " ");
+
+
         if (unwrothWords[0] + " " == input.value) {
             // WHEN TYPED WORD IS CORRECT
             wroth.innerHTML += " ";
+            correctTypedWord += 1;
         }else{
             // WHEN TYPED WORD IS INCORRECT
-            //      REMOVE REST OF THE INCORRECT WORD
-            unwroth.innerText = unwroth.innerText.slice(unwrothWords[0].length - correctLetterOfWord.length);
 
+            //      ADD THE WORD AS INCORRECT WORD WITH RED COLOR
             //      REMOVE EXESTED CORRECT LETTER FROM THE WROTH SPAN
             wroth.innerHTML = wroth.innerHTML.replace(new RegExp(correctLetterOfWord+"$"),"");
 
-            //      ADD THE WORD AS INCORRECT WORD WITH RED COLOR
             wroth.innerHTML += wrongWord(unwrothWords[0]);
             wrong.push(unwrothWords[0]);
 
@@ -70,25 +106,28 @@ input.addEventListener("keyup",function(e) {
 
         // SCROLL IF THE WROTH TAKE ALL HEIGHT
         if(wroth.offsetHeight > screen.offsetHeight*(HScroll+1)+7){
-            screen.scrollTop = unwroth.offsetTop ;
+            screen.scrollTop = screen.offsetHeight*(HScroll +1)-24 ;
             HScroll += 1;
         }
     }else if(e.key === unwroth.innerText.charAt(0)){
         /*
         * WHEN USER TAPE A CORRECT LETTER ;
         * */
-
-        changePosition(wroth,unwroth, e.key);
-        correctLetterOfWord += e.key ;
-        correctTypedWord +=1;
+        if(input.value.length <= unwrothWords[0].length){
+            changePosition(wroth,unwroth, e.key);
+            correctLetterOfWord += e.key ;
+            correctTypedLetter +=1;
+        }
         if(input.classList.contains("text-danger")){
-            console.log(input.value , unwrothWords[0].slice(0,input.value.length));
             if(input.value == unwrothWords[0].slice(0,input.value.length)){
                 input.classList.remove("text-danger");
             }
         }
+
     }else if(e.key != unwroth.innerText.charAt(0)){
+        /*
+        * WHEN USER PRESS THE WRONG KEY
+        * */
         input.classList.add("text-danger");
     }
 });
-
