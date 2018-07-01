@@ -1,0 +1,36 @@
+#presentation {
+
+  background-image: url("../Img/cover1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom;
+
+
+  color:#ffffff;
+  height: 500px;
+}
+.row{
+  margin: 0;
+}
+#developerImg{
+  width:250px;
+  height:250px;
+  border:solid black 5px;
+}
+.float-clear{
+  clear:both;
+}
+#About-us{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper{
+  width:280px;
+}
+.dev-social a{
+  display: block;
+  font-size:1.2em ;
+}
