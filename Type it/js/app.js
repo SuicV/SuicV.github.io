@@ -59,6 +59,7 @@
                 '<div class="alert alert-danger" role="alert"><i class="fas fa-clock"></i> Time up</div>' +
                 '<p><strong>typing wrongs : </strong>'+tool.statistics.typing_wrongs.join(" | ")+'</p>'+
                 '<p><strong>correct typed words : </strong>'+tool.statistics.correct_typed_words+'</p>'+
+                '<p><strong>High CPM : </strong>'+tool.statistics.h_cpm+'</p>'+
                 '<p>thank you for using this tool</p>';
         },
 
@@ -69,8 +70,8 @@
                 var cpm = tool.cps*60,
                     dom_element_time = tool.dom_elements.statistics.children[1].lastElementChild,
                     dom_element_cpm = tool.dom_elements.statistics.children[0].lastElementChild;
-                if(cpm > tool.high_cpm ){
-                    tool.high_cpm = cpm ;
+                if(cpm > tool.statistics.h_cpm ){
+                    tool.statistics.h_cpm = cpm ;
                 }
                 if(dom_element_cpm && dom_element_time){
                     dom_element_cpm.innerText = cpm ;
