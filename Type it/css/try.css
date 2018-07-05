@@ -1,6 +1,5 @@
 .tool{
-  max-width: 500px;
-  min-width:250px;
+
   margin:15px auto ;
 
   border:solid black 3px;
@@ -12,10 +11,9 @@
 }
 .textToWrite{
   width:100%;
-  height: 150px;
-  overflow: hidden;
+  display: block;
 }
-.writed , .unwrited {
+.unwrited {
   font-size:1.3rem;
 }
 .typing{
@@ -23,5 +21,10 @@
 
   width: 100%;
   text-align: center;
+}
+.resultes{
+  max-width: 500px;
+  min-width:250px;
+  margin:15px auto ;
 
 }
