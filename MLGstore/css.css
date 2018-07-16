@@ -1,0 +1,126 @@
+/* HEADER */
+.icon-bar{
+  background: red;
+}
+header{
+  min-height: 70px;
+  background: rgba(0, 172, 61, 0.63);
+}
+.navbar-logo , .navbar-logo:hover {
+  color : #7c7c7c;
+}
+
+li[class="nav-item"]{
+  transition: all 500ms;
+}
+li[class="nav-item"] a {
+  font-weight: bold;
+  line-height: 70px;
+
+  color:white !important;
+
+  width:100%;
+
+  transition:all 500ms;
+}
+li[class="nav-item"] a:hover {
+  color:black !important;
+  background: white ;
+}
+
+/*========================================================*/
+/* SLIDE MENU */
+#slide-menu {
+  transition: all 1s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 172, 61, 1);
+  z-index: 50;
+  right: 50%;
+  transform: translateX(-100%);
+
+}
+@media all and (max-width: 670px) {
+  #slide-menu{
+    right: 0;
+  }
+}
+#slide-menu h3{
+  cursor: default;
+}
+.show-slid-bar{
+  transform : translateX(0) !important;
+}
+#slide-menu li {
+  list-style: none;
+}
+#slide-menu li a {
+  text-decoration: none;
+  color:white;
+  font-size:1.3rem
+}
+
+#slide-menu li a:hover {
+  color:black;
+}
+/*========================================================*/
+
+/* SEARCH PRODUCT */
+.search-section {
+  padding : 40px 0 40px ;
+}
+.search-product-form input[type="search"]{
+  border:solid rgba(0, 172, 61, 0.63) 3px;
+  border-radius: 0;
+  color:#000000;
+  box-shadow: none;
+  max-width: 700px;
+  min-width: 200px;
+}
+#search{
+  background: rgba(0, 172, 61, 0.63);
+  border:solid rgba(0, 172, 61, 0.63) 3px;
+  color:#ffffff;
+  transition: all 500ms ease-in-out ;
+}
+#search:hover{
+  border:solid 3px #000000;
+  background:black;
+}
+
+.feature {
+  background: white;
+  text-align: center;
+}
+.feature-icon{
+
+  background:rgba(0, 172, 61, 0.63);
+  border:solid 1px #000000;
+  border-radius: 50%;
+  color:white;
+  width: 100px;
+  height: 100px;
+
+}
+.feature-icon i {
+  line-height: 100px;
+  font-size:30px;
+}
+.feature-presentation p {
+  text-align: justify;
+}
+
+/*======================================================*/
+/* OUR PRODUCT */
+.product{
+  min-height: 230px;
+}
+.product-img{
+  height: 200px !important;
+}
+/*=====================================================*/
+footer li{
+  list-style: none;
+}

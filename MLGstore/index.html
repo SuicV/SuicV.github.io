@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+		<head>
+			<title></title>
+			<meta charset="UTF-8" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<!-- STYLESHEET -->
+			<link rel="stylesheet" href="../css/bootstrap/bootstrap-grid.min.css"/>
+			<link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css"/>
+			<link rel="stylesheet" href="../css/font-awsome/css/fontawesome-all.min.css"/>
+			<link rel="stylesheet" type="text/css" href="css.css" />
+		</head>
+		<body>
+			<!-- START HEADER-->
+			<header class="navbar navbar-light navbar-expand-lg p-0" >
+				<div class="container-fluid" >
+					<a class="navbar-brand text-dark navbar-logo" href="#">MLGstore</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation-bar" aria-controls="navigation-bar" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon" style="color:black !important; border-color:white !important;"></span>
+					</button>
+					<nav id="navigation-bar" class="collapse navbar-collapse justify-content-lg-end">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link pl-2 pr-2 p-0" href="#"><i class="fas fa-home"></i> Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link pl-2 pr-2 p-0" href="#"><i class="fas fa-inbox"></i> Contact-us</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link pl-2 pr-2 p-0" href="#"><i class="fas fa-map-pin"></i>About-us</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header><!-- END HEADER -->
+			<!-- START SLIDE MENU -->
+			<div id="slide-menu">
+				<h5 style="text-align: right;"><i id="closeBtn" class="fas fa-backward"></i></h5>
+				<nav role="navigation">
+					<div id="Home" class="d-none">
+						<h3>Home</h3>
+						<ul>
+							<li><a href="#feature">Feature</a></li>
+							<li><a href="#product-by-category">Products</a></li>
+							<li><a href="#address">Address</a></li>
+							<li><a href="#social-media">Social Media</a></li>
+							<li><a href="#footer">Bottom</a></li>
+						</ul>
+					</div>
+					<div id="Contact-us" class="d-none">
+						<h3>contact us</h3>
+						<ul>
+							<li><a href="#feature">Feature</a></li>
+							<li><a href="#product-by-category">Products</a></li>
+							<li><a href="#address">Address</a></li>
+							<li><a href="#social-media">Social Media</a></li>
+							<li><a href="#footer">Bottom</a></li>
+						</ul>
+					</div>
+					<div id="About-us" class="d-none">
+						<h3>About Us</h3>
+						<ul>
+							<li><a href="#feature">Feature</a></li>
+							<li><a href="#product-by-category">Products</a></li>
+							<li><a href="#address">Address</a></li>
+							<li><a href="#social-media">Social Media</a></li>
+							<li><a href="#footer">Bottom</a></li>
+						</ul>
+					</div>
+				</nav>
+			</div><!-- END SLID MENU -->
+			<!-- START SEARCH SECTION -->
+			<section class="search-section" role="search">
+				<div class="search-product">
+					<form class="search-product-form  form-inline col-12" action="#">
+						<div class="input-group w-100 justify-content-md-center">
+							<input class="form-control" type="search" autocomplete="off" placeholder="Look for product ..." aria-describedby="search"/>
+							<div class="input-group-prepend d-inline">
+								<button class="btn" id="search"><i class="fas fa-search"></i></button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="container pt-5">
+					<div class="row">
+						<!-- FEATURE SECURITY-->
+						<div class="col-md-4 col-sm-12 feature">
+							<div class="feature-icon d-inline-block">
+								<i class="fas fa-lock"></i>
+							</div>
+							<div class="feature-presentation p-2">
+								<h3>Secure</h3>
+								<p>we use the last security technologies to let your information's hide from eny spy try to get it </p>
+							</div>
+						</div>
+						<!-- DELIVERING FEATURE -->
+						<div class="col-md-4 col-sm-12 feature">
+							<div class="feature-icon d-inline-block">
+								<i class="fas fa-truck"></i>
+							</div>
+							<div class="feature-presentation p-2">
+								<h3>Delevering</h3>
+								<p>don't think about shipping , we have an international shipping . to any country in the planet</p>
+							</div>
+						</div>
+						<!-- QUALITY FEATURE -->
+						<div class="col-md-4 col-sm-12 feature">
+							<div class="feature-icon d-inline-block">
+								<i class="fas fa-money-bill"></i>
+							</div>
+							<div class="feature-presentation p-2">
+								<h3>Quality</h3>
+								<p>Our product featured with a high and premium quality  </p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!--END SEARCH SECTION -->
+			<!-- START SHOWING  PRODUCT -->
+			<section class="container pb-4">
+				<div>
+					<h3 class="pb-2" style="border-bottom : 2px solid rgba(0, 172, 61, 0.63) ;">Our Product</h3>
+					<div class="row">
+						<aside class="col-md-12 col-lg-3">
+							<h4>Search : </h4>
+							<!-- START SEARCH BY CATEGORIES-->
+							<div class="categories">
+								<h5>Catigories :</h5>
+								<select name="catigory" id="" class="w-100 form-control">
+									<option value="">Select category</option>
+									<option value="vedio-games">video games</option>
+									<option value="laptop's">laptop's</option>
+									<option value="pc-gamer">pc-gamer</option>
+									<option value="setup">setup</option>
+									<option value="camera">camera</option>
+								</select>
+							</div><!-- END SEARCH BY CATEGORIES -->
+							<!-- START SEARCH BY PRICE-->
+							<div class="price-range">
+								<h5>price range :</h5>
+								<span>max price</span>
+								<input id="max-price" class="w-100 form-control" type="range" min="0" step="50" max="20000" />
+								<span>min price</span>
+								<input id="min-price" class="w-100 form-control" type="range" min="0" step="50" max="20000" />
+								<span id="range-price"></span>
+							</div>
+							<!-- END SEARCH BY PRICE -->
+							<button class="btn btn-outline-success w-100 mt-2">Search <i class="fas fa-search"></i> </button>
+						</aside>
+						<div class="col-md-12 col-lg-9">
+							<h4>Products : </h4>
+							<div class="row">
+								<div class="product card col-sm-12 col-md-4 pb-4 pl-0 pr-0">
+									<img class="product-img card-img-top w-100" src="img/programming1.jpeg" alt="camera"/>
+									<div class="product-info card-body">
+										<div class="product-name card-title">Canon X755</div>
+										<div class="product-presentation card-text">one of the best camera for taking pictures and video's ,
+											is a good camera used by youtuber's to make there content .
+											this camera featured by the quality of the taken pictures .
+										</div>
+										<a class="btn btn-success" href="#">read more</a>
+									</div>
+								</div>
+								<div class="product card col-sm-12 col-md-4 pb-4 pl-0 pr-0">
+									<img class="product-img card-img-top w-100" src="img/programming1.jpeg" alt="camera"/>
+									<div class="product-info card-body">
+										<div class="product-name card-title">Canon X755</div>
+										<div class="product-presentation card-text">one of the best camera for taking pictures and video's ,
+											is a good camera used by youtuber's to make there content .
+											this camera featured by the quality of the taken pictures .
+										</div>
+										<a class="btn btn-success" href="#">read more</a>
+									</div>
+								</div>
+								<div class="product card col-sm-12 col-md-4 pb-4 pl-0 pr-0">
+									<img class="product-img card-img-top w-100" src="img/programming1.jpeg" alt="camera"/>
+									<div class="product-info card-body">
+										<div class="product-name card-title">Canon X755</div>
+										<div class="product-presentation card-text">one of the best camera for taking pictures and video's ,
+											is a good camera used by youtuber's to make there content .
+											this camera featured by the quality of the taken pictures .
+										</div>
+										<a class="btn btn-success" href="#">read more</a>
+									</div>
+								</div>
+								<div class="product card col-sm-12 col-md-4 pb-4 pl-0 pr-0">
+									<img class="product-img card-img-top w-100" src="img/programming1.jpeg" alt="camera"/>
+									<div class="product-info card-body">
+										<div class="product-name card-title">Canon X755</div>
+										<div class="product-presentation card-text">one of the best camera for taking pictures and video's ,
+											is a good camera used by youtuber's to make there content .
+											this camera featured by the quality of the taken pictures .
+										</div>
+										<a class="btn btn-success" href="#">read more</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section><!-- END SHOWING PRODUCT-->
+
+			<!-- SART FOOTER -->
+			<footer id="footer" class="container-fluid bg-dark">
+				<div class="container pt-5 pb-5">
+					<div class="row">
+						<!-- START SOCIAL MEDA LINKS-->
+						<div class="socialmeda col-sm-12 col-md-4" id="social-media">
+							<h5 class="text-light border-success border-bottom pb-2"><i class="fab fa-hacker-news"></i> Social Meda links : </h5>
+							<ul>
+								<li><h5><a class="text-light " href="#"><i class="fab fa-facebook"></i> Facebook</a></h5></li>
+								<li><h5><a class="text-light" href="#"><i class="fab fa-github"></i> Github</a></h5></li>
+								<li><h5><a class="text-light" href="#"><i class="fab fa-twitter"></i> Twitter</a></h5></li>
+								<li><h5><a class="text-light" href="#"><i class="fab fa-pinterest"></i> Pintrest</a></h5></li>
+							</ul>
+						</div><!-- END SOCIAL MEDIA LINKS -->
+						<div class="socialmeda col-sm-12 col-md-4" id="address">
+							<h5 class="text-light border-success border-bottom pb-2"><i class="fas fa-map"></i> Address :</h5>
+							<address class="text-light">
+								United state Washington DC
+
+							</address>
+							<h6 class="text-light"><i class="fas fa-phone"></i> : +25-xxxxxxxx</h6>
+						</div>
+
+					</div>
+				</div>
+			</footer><!-- END FOOTER-->
+			<!-- SCRIPTS -->
+			<script type="text/javascript" src="../js/jquery.js"></script>
+			<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="../js/bootstrap.bundle.min.js"></script>
+			<script src="app.js" type="text/javascript"></script>
+		</body>
+	</html>
