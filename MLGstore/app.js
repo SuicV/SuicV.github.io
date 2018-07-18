@@ -90,6 +90,14 @@
                     setTimeout(slideMenu.showMenuById ,slideMenu.restAnimationDuration());
                 });
             }
+            var navLinks = this.slideMenu.querySelectorAll("a") ;
+            for(var link = 0 ; link < navLinks.length ; link++){
+                navLinks[link].addEventListener("click",function(e){
+                    slideMenu.hideAllElSlideMenu();
+                    slideMenu.hideElSlideMenu();
+                    document.body.style.overflow = "auto";
+                });
+            }
         },
         addCloseSlideMenuEvent : function(){
             this.closeBtn.addEventListener("click",function(){
@@ -106,37 +114,148 @@
         animDuration : 1000,
         closeBtn : document.querySelector("#closeBtn")
     });
-    function setPrice (resultDiv){
-        if(typeof oldMaxPric == "undefined"){
-            oldMaxPric = rangeInputs.inpPricMax.value ;
-        }
-        if(typeof oldMinPric == "undefined"){
-            oldMinPric = rangeInputs.inpPricMin.value ;
-        }
-        if(rangeInputs.inpPricMax.value > rangeInputs.inpPricMin.value){
-            resultDiv.innerText = "max price : "+rangeInputs.inpPricMax.value+" Min price : "+rangeInputs.inpPricMin.value ;
+
+    /*
+    *
+    *   CONFIG SELECTING PRICES  ;
+    *
+    */
+
+    function setPrice (resultDiv, maxValue, minValue){
+        if(parseInt(maxValue) >= parseInt(minValue)){
+            resultDiv.innerHTML = "<p class='mb-0'>max price : <span class='badge badge-primary'>"+maxValue+" DH</span></p>" +
+            "<p class='mb-0'> Min price : <span class='badge badge-primary'>"+minValue+" DH</span></p>" ;
+            oldMaxPric = parseInt(maxValue) ;
+            oldMinPric = parseInt(minValue) ;
         }else{
             rangeInputs.inpPricMax.value = oldMaxPric;
-            rangeInputs.inpPricMin = oldMinPric ;
+            rangeInputs.inpPricMin.value = oldMinPric ;
         }
     }
     var rangeInputs  = {
         inpPricMax : document.getElementById("max-price"),
         inpPricMin : document.getElementById("min-price")
         };
-    var oldMaxPric, oldMinPric ;
-    for(key in rangeInputs){
-        rangeInputs[key].onchange = function(){
-            setPrice(document.getElementById("range-price"));
-        };
-        rangeInputs[key].onclick = function(e){
-            console.log(e.target);
-            if(e.target == "max-price"){
-                oldMaxPric = rangeInputs.inpPricMax.value ;
-            }
-            if(e.target=="min-price"){
-                oldMinPric = rangeInputs.inpPricMin.value ;
-            }
+    var oldMaxPric = parseInt(rangeInputs.inpPricMax.value) ,
+        oldMinPric = parseInt(rangeInputs.inpPricMin.value) ;
+
+    for(var key in rangeInputs){
+
+        rangeInputs[key].onchange = function(e){
+            setPrice(document.getElementById("range-price"),rangeInputs.inpPricMax.value , rangeInputs.inpPricMin.value);
         };
     }
+
+    /*
+    *
+    * AUTOCOMPITION SYSTEM
+    *
+    **/
+    var atoComplitionSys = {
+
+        previousReq : null ,
+        currentReq : null ,
+        input : null,
+        resultsDiv : null ,
+        init : function(conf){
+            this.input = conf.el ;
+            this.resultsDiv = conf.resDiv ;
+            this.input.addEventListener("keyup",function(e){
+                atoComplitionSys.getResults(e.target.value);
+
+            });
+        },
+
+        getResults : function(productName){
+            if(productName != ""){
+                /*
+                * IGNORE INCOMPLETE REQUEST
+                * */
+                if(this.previousReq != null){
+                    if(this.previousReq.readyState < this.previousReq.DONE){
+                        this.previousReq.abort();
+                    }
+                }
+                /*
+                * SET NEW REQUSET
+                * */
+                this.currentReq = new XMLHttpRequest();
+                this.previousReq = this.currentReq ;
+                this.currentReq.open("GET","products.json");
+                this.currentReq.onreadystatechange = function(e){
+                    if(e.target.readyState == e.target.DONE ){
+                        if(e.target.status == 200){
+                            var jsonResponse = JSON.parse(e.target.responseText);
+                            var results = atoComplitionSys.searchResultsFromResp(jsonResponse,productName);
+                            atoComplitionSys.showResults(results);
+                        }else{
+                            console.log("error");
+                        }
+                    }
+                };
+                this.currentReq.send();
+            }
+
+        },
+        searchResultsFromResp : function(response, value){
+            var results= {} ;
+            for(var product in response ){
+                    if(product.search(new RegExp("^"+value,"i")) != -1){
+                        results[product] = response[product];
+                    }
+            }
+            return results ;
+        },
+        showResults : function(Results){
+            if(Object.keys(Results).length >= 1){
+                var resultsDiv = document.querySelector("#search-results");
+                if(resultsDiv.firstElementChild){
+                    resultsDiv.firstElementChild.remove();
+                }
+                var htmlToAdd = "<div style='height: 150px; overflow: scroll;'>";
+                for(var product in Results){
+                    var currentProduct = Results[product];
+                    htmlToAdd += "<div style='border-bottom: 3px solid black;'>";
+                    htmlToAdd +="<h3>"+product+"</h3>";
+                    for(var feature in currentProduct){
+                        htmlToAdd += "<p>"+feature+" : "+currentProduct[feature]+"</p>";
+                    }
+                    htmlToAdd += "</div>";
+                }
+                htmlToAdd += "</div>";
+                resultsDiv.innerHTML = htmlToAdd ;
+            }
+
+        }
+    };
+    atoComplitionSys.init({
+        el : document.querySelector(".search-product-form input[type='search']"),
+        resDiv : document.querySelector(".dd")
+
+    });
+
+    /*
+    *
+    *   scroll top btn
+    *
+    **/
+    document.body.onscroll = function(e) {
+        var scrollbtn = document.querySelector("#scroll-top");
+        if(e.pageY > 200){
+            if(scrollbtn.classList.contains("d-none")){
+                scrollbtn.classList.remove("d-none");
+                scrollbtn.classList.add("d-block");
+
+            }
+        }else{
+            if(scrollbtn.classList.contains("d-block")){
+                scrollbtn.classList.remove("d-block");
+                scrollbtn.classList.add("d-none");
+
+            }
+        }
+    };
+    document.querySelector("#scroll-top").addEventListener("click",function(){
+        window.scrollTo(0,0);
+    });
 })();
