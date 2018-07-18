@@ -161,8 +161,13 @@
             this.input = conf.el ;
             this.resultsDiv = conf.resDiv ;
             this.input.addEventListener("keyup",function(e){
-                atoComplitionSys.getResults(e.target.value);
-
+                if(e.target.value !=""){
+                    atoComplitionSys.getResults(e.target.value);
+                }else{
+                    if(document.getElementById("search-results").firstElementChild){
+                        document.getElementById("search-results").firstElementChild.remove();
+                    }
+                }
             });
         },
 
