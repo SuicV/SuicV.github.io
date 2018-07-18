@@ -1,0 +1,81 @@
+{
+  "canon 5D" :{
+      "price":5000,
+      "buy rate" : "5 stars"
+    },
+  "canon 7D" :{
+    "price":7500,
+    "buy rate" : "5 stars"
+  },
+  "canon 55D" :{
+    "price":2550,
+    "buy rate" : "5 stars"
+  },
+  "nikon 7700N" :{
+    "price":5000,
+    "buy rate" : "5 stars"
+  },
+  "FIFA 17" :{
+    "price":250,
+    "buy rate" : "4 stars"
+  },
+
+  "FIFA 18" :{
+    "price":254,
+    "buy rate" : "4 stars"
+  },
+
+  "FIFA 19" :{
+    "price":250,
+    "buy rate" : "5 stars"
+  },
+  "GTA IV" :{
+    "price":700,
+    "buy rate" : "5 stars"
+  },
+  "GTA V" :{
+    "price":1000,
+    "buy rate" : "5 stars"
+  },
+
+  "CALL OF DUTY 7" :{
+    "price":700,
+    "buy rate" : "5 stars"
+  },
+  "GIDE TO ANGOLARE JS" :{
+    "price":150,
+    "buy rate" : "5 stars"
+  },
+  "JQUERY JS BOOK" :{
+    "price":40,
+    "buy rate" : "5 stars"
+  },
+  "A MLG BOOK" :{
+    "price":144,
+    "buy rate" : "5 stars"
+  },
+  "MILKE GG" :{
+    "price":44,
+    "buy rate" : "5 stars"
+  },
+  "MINECRAFT" :{
+    "price":400,
+    "buy rate" : "2 stars"
+  },
+  "ASSASSIN'S CREED BLACK FLAG 4 " :{
+    "price":70,
+    "buy rate" : "5 stars"
+  },
+  "KALI LINUX" :{
+    "price":55,
+    "buy rate" : "5 stars"
+  },
+  "LINUX GIDE " :{
+    "price":400,
+    "buy rate" : "5 stars"
+  },
+  "LINUX HAND BOOK" :{
+    "price":10,
+    "buy rate" : "5 stars"
+  }
+}
