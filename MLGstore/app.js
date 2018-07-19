@@ -13,7 +13,7 @@
         idElToShow : null ,
         closeBtn : null ,
         /**
-         *  @method init this method used to set config of this object
+         *  @function init this method used to set config of this object
          *  @param  conf object contain configurations
          **/
         init : function(conf){
@@ -140,10 +140,11 @@
         oldMinPric = parseInt(rangeInputs.inpPricMin.value) ;
 
     for(var key in rangeInputs){
-
-        rangeInputs[key].onchange = function(e){
-            setPrice(document.getElementById("range-price"),rangeInputs.inpPricMax.value , rangeInputs.inpPricMin.value);
-        };
+        if(rangeInputs.hasOwnProperty(key)){
+            rangeInputs[key].onchange = function(e){
+                setPrice(document.getElementById("range-price"),rangeInputs.inpPricMax.value , rangeInputs.inpPricMin.value);
+            };
+        }
     }
 
     /*
@@ -161,7 +162,7 @@
             this.input = conf.el ;
             this.resultsDiv = conf.resDiv ;
             this.input.addEventListener("keyup",function(e){
-                if(e.target.value !=""){
+                if(e.target.value != ""){
                     atoComplitionSys.getResults(e.target.value);
                 }else{
                     if(document.getElementById("search-results").firstElementChild){
@@ -205,9 +206,9 @@
         searchResultsFromResp : function(response, value){
             var results= {} ;
             for(var product in response ){
-                    if(product.search(new RegExp("^"+value,"i")) != -1){
-                        results[product] = response[product];
-                    }
+                if(product.search(new RegExp("^"+value,"i")) != -1){
+                    results[product] = response[product];
+                }
             }
             return results ;
         },
@@ -219,13 +220,19 @@
                 }
                 var htmlToAdd = "<div style='height: 150px; overflow: scroll;'>";
                 for(var product in Results){
-                    var currentProduct = Results[product];
-                    htmlToAdd += "<div style='border-bottom: 3px solid black;'>";
-                    htmlToAdd +="<h3>"+product+"</h3>";
-                    for(var feature in currentProduct){
-                        htmlToAdd += "<p>"+feature+" : "+currentProduct[feature]+"</p>";
+                    if(Results.hasOwnProperty(product)){
+                        var currentProduct = Results[product];
+                        htmlToAdd += "<div style='border-bottom: 3px solid black;'>";
+                        htmlToAdd +="<h3>"+product+"</h3>";
+                        htmlToAdd += "<ul>";
+                        for(var feature in currentProduct){
+                            if(currentProduct.hasOwnProperty(feature)){
+                                htmlToAdd += "<li>"+feature+" : "+currentProduct[feature]+"</li>";
+                            }
+                        }
+                        htmlToAdd += "</ul>";
+                        htmlToAdd += "</div>";
                     }
-                    htmlToAdd += "</div>";
                 }
                 htmlToAdd += "</div>";
                 resultsDiv.innerHTML = htmlToAdd ;
@@ -263,4 +270,5 @@
     document.querySelector("#scroll-top").addEventListener("click",function(){
         window.scrollTo(0,0);
     });
+
 })();
