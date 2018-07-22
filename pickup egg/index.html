@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pickup egg</title>
+	<link rel="stylesheet" href="game.css"/>
+</head>
+<body>
+	<div class="menu">
+		<div id="logo">
+			<h3>Pickup The egg</h3>
+		</div>
+		<button class="menu-btn" id="stargame-btn">
+			start game
+		</button>
+		<button class="menu-btn" id="rulesgame-btn">
+			how to play
+		</button>
+	</div>
+	<div style="display: none;" id="how-to-play">
+		<p style="padding-left: 50px;">the main rule of the game is to pickup dropped eggs without crashing more than 4 eggs if that's happen this game is over .</p>
+	</div>
+	<div style="display: none;" id="game-screen">
+		<p id="score-board">score : <strong id="score">0</strong> || crashed eggs : <strong id="crashed-eggs">0</strong></p>
+		<div class="chicken-row">
+			<img class="chicken" src="img/chicken.svg" alt=""/>
+			<img class="chicken" src="img/chicken.svg" alt=""/>
+			<img class="chicken" src="img/chicken.svg" alt=""/>
+		</div>
+		<div class="bag-div">
+			<img class="bag" src="img/bag.png" alt=""/>
+		</div>
+	</div>
+	<div style="display: none;" id="game-over">
+		<h3>game over . your high score : <strong id="high-score"></strong></h3>
+	</div>
+	<script src="game.js"></script>
+</body>
+</html>
