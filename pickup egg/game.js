@@ -280,11 +280,16 @@
          *  WHEN MOUSE MOVE ON BODY ELEMENT
          *
          **/
-
-        document.querySelector("body").onmousemove = function(e){
+        var bodyEvent ;
+        if(window.navigator.userAgent.search(/android|mobile|iphone/i) != -1){
+            bodyEvent = "touchmouve";
+        }else{
+            bodyEvent = "mousemove";
+        }
+        document.querySelector("body").addEventListener(bodyEvent , function(e){
             // MOVE BAG WITH THE MOSE MOVE
             gameCore.bag.style.left = e.clientX - 150/2+"px";
-        };
+        });
         document.querySelector("#game-screen").style.display = "block";
         gameCore.init({
             bag : document.querySelector(".bag"),
