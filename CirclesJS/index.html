@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CirclesJS Home</title>
+  <script src="js/CirclesJS.min.js"></script>
+  <script src="js/prism.js"></script>
+  <link rel="stylesheet" href="css/prism.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <section id="banner" role="banner">
+    <!-- #region header-->
+    <header id="top-header">
+      <div class="container">
+        <div id="logo">
+          <h1>CirclesJS</h1>
+        </div>
+        <nav id="navigation-menu" role="navigation">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#examples">Examples</a></li>
+            <li><a href="https://www.github.com/Suicv/CirclesJS">Github</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- #endregion header -->
+    <!-- #region banner-->
+    <div class="container">
+      <div class="presentation">
+        <div>
+          <p>draw <strong>statistic circle</strong> now easier with <strong>JavaScript</strong></p>
+        </div>
+        <span class="separator"></span>
+        <div>
+          <svg class="circle" id="presCircle" viewBox="0 0 250 250"></svg>
+        </div>
+      </div>
+    </div>
+    <!-- #endregion banner -->
+  </section>
+
+  <section id="examples">
+    <div class="container">
+      <div id="example-text">
+        <h2>Examples</h2>
+      </div>
+      <!-- #region example1 -->
+      <div class="example-content">
+        <div class="presentation">
+          <div class="example-code">
+            <pre class="language-js">
+              <code class="language-js">
+new Circles({
+  el: document.getElementById("ex1"),
+  circle : {
+    value: 75,
+    radius: 125,
+    stroke_width : 30,
+    stroke : '#09B1A0'
+  },
+  middleText : {
+    fill : '#09B1A0',
+    value_type : "percentage",
+    font_size : 30,
+    font_family : 'sans-serif'
+  },
+  fillRest : {
+    stroke : "#F0D628"
+  }
+}).animate(5000)
+              </code>
+            </pre>
+            <p style="text-align: right;"><a href="documentation.html">read more about configuration</a></p>
+          </div>
+          <span class="separator"></span>
+          <div>
+            <svg class="circle" viewBox="0 0 250 250" id="ex1"></svg>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion example1-->
+      <!-- #region example2 -->
+      <div class="example-content">
+        <div class="presentation">
+          <div class="example-code">
+            <pre class="language-js">
+              <code class="language-js">
+new Circles({
+  el: document.getElementById("ex2"),
+  circle : {
+    value: 77,
+    radius: 125,
+    stroke_width : 20,
+    stroke : '#09B1A0',
+    stroke_linecap : "square",
+    max_angle:180,
+    start_angle : -90
+  },
+  middleText : {
+    fill : '#09B1A0',
+    value_type : "number",
+    font_size : 30,
+    font_family : 'sans-serif'
+  },
+  fillRest : {
+    stroke : "#F0D628"
+  }
+}).animate(5000)
+              </code>
+            </pre>
+            <p style="text-align: right;"><a href="documentation.html">read more about configuration</a></p>
+          </div>
+          <span class="separator"></span>
+          <div>
+            <svg class="circle" viewBox="0 0 250 250" id="ex2"></svg>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion example2 -->
+      <!-- #region example3 -->
+      <div class="example-content">
+        <div class="presentation">
+          <div class="example-code">
+            <pre class="language-js" style="text-align: left; overflow: scroll; height: 400px;">
+              <code class="language-js">
+new Circles({
+  el: document.getElementById("ex3"),
+  circle : {
+    value: 75,
+    radius: 125,
+    stroke_width : 10,
+    stroke : '#09B1A0'
+  },
+  middleText : {
+    fill : '#09B1A0',
+    value_type : "percentage",
+    font_size : 30,
+    font_family : 'sans-serif'
+  },
+  fillRest : {
+    stroke : "#F0D628",
+    stroke_width : 5,
+    radius: 125-10
+  }
+}).animate(5000)
+              </code>
+            </pre>
+            <p style="text-align: right;"><a href="documentation.html">more about configuration</a></p>
+          </div>
+          <span class="separator"></span>
+          <div>
+            <svg class="circle" viewBox="0 0 250 250" id="ex3"></svg>
+          </div>
+        </div>
+      </div>
+      <!-- #endregion example3 -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="container presentation">
+      <div class="contributres">
+        <h2>contributres</h2>
+        <div>
+          <a href="https://www.github.com/SuicV"><img class="contributer-img" src="img/suicv_cont.jpg" title="SuicV github"></a>
+        </div>
+      </div>
+      <span class="separator"></span>
+      <div class="Licence">
+        <p><strong>Licence:</strong> GNU Public Licence v3</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    // presentation circle 
+    new Circles({
+      el: document.getElementById("presCircle"),
+      circle : {
+        value: 100,
+        radius: 125,
+        stroke_width : 30,
+        stroke : '#09B1A0'
+      },
+      middleText : {
+        fill : '#09B1A0',
+        value_type : "percentage",
+        font_size : 30,
+        font_family : 'sans-serif'
+      }
+    }).animate(2000)
+    // example 1
+    new Circles({
+      el: document.getElementById("ex1"),
+      circle : {
+        value: 75,
+        radius: 125,
+        stroke_width : 30,
+        stroke : '#09B1A0'
+      },
+      middleText : {
+        fill : '#09B1A0',
+        value_type : "percentage",
+        font_size : 30,
+        font_family : 'sans-serif'
+      },
+      fillRest : {
+        stroke : "#F0D628"
+      }
+    }).animate(5000)
+    // example 2
+    new Circles({
+      el: document.getElementById("ex2"),
+      circle : {
+        value: 77,
+        radius: 125,
+        stroke_width : 20,
+        stroke : '#09B1A0',
+        stroke_linecap : "square",
+        max_angle:180,
+        start_angle : -90
+      },
+      middleText : {
+        fill : '#09B1A0',
+        value_type : "number",
+        font_size : 30,
+        font_family : 'sans-serif'
+      },
+      fillRest : {
+        stroke : "#F0D628"
+      }
+    }).animate(5000)
+    // example 3 
+    new Circles({
+      el: document.getElementById("ex3"),
+      circle : {
+        value: 75,
+        radius: 125,
+        stroke_width : 10,
+        stroke : '#09B1A0'
+      },
+      middleText : {
+        fill : '#09B1A0',
+        text : "percentage",
+        font_size : 30,
+        font_family : 'sans-serif'
+      },
+      fillRest : {
+        stroke : "#eed111",
+        stroke_width : 5,
+        radius: 115
+      }
+    }).animate(1000)
+  </script>
+</body>
+</html>
